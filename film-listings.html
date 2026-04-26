@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,7 +6,13 @@
     <title>Cinema Listings</title>
     <style>
       /* ── Reset & base ── */
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
       body {
         font-family: system-ui, sans-serif;
@@ -51,7 +57,9 @@
         display: flex;
         flex-direction: column;
         gap: 0.6rem;
-        transition: transform 0.15s, box-shadow 0.15s;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
       }
 
       .film-card:hover {
@@ -102,7 +110,6 @@
     </style>
   </head>
   <body>
-
     <header>
       <h1>🎬 Now Showing</h1>
       <p>Cinema listings — rendered from data</p>
@@ -172,6 +179,13 @@
           certificate: "PG",
           duration: 106,
         },
+        {
+          title: "The Heroes",
+          director: "Nikita",
+          times: ["12:30", "19:20"],
+          certificate: "PG",
+          duration: 90,
+        },
       ];
 
       // ── Step 8 + 9: Reusable component using <template> ───────────────────
@@ -184,11 +198,18 @@
       //
       const template = document.getElementById("film-card");
 
-      const createFilmCard = ({ title, director, times, certificate, duration }) => {
+      const createFilmCard = ({
+        title,
+        director,
+        times,
+        certificate,
+        duration,
+      }) => {
         const card = template.content.cloneNode(true);
 
         card.querySelector("[data-title]").textContent = title;
-        card.querySelector("[data-director]").textContent = `Director: ${director}`;
+        card.querySelector("[data-director]").textContent =
+          `Director: ${director}`;
         card.querySelector("[data-duration]").textContent = `${duration} min`;
         card.querySelector("[data-certificate]").textContent = certificate;
 
@@ -213,6 +234,5 @@
       const filmList = document.getElementById("film-list");
       filmList.append(...filmCards);
     </script>
-
   </body>
 </html>
